@@ -4,11 +4,32 @@
 package cracking.the.coding.interview;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    static long count;
+    public static int fibonacciRecursive(Integer fibNum) {
+        count++;
+        if (fibNum == 0) return 0;
+        if (fibNum == 1) return 1;
+        return fibonacciRecursive(fibNum - 2) + fibonacciRecursive(fibNum - 1);
+    }
+
+    public static int fibonacciIterative(Integer fibNum){
+        if (fibNum == 0) return 0;
+        int a = 0;
+        int b = 1;
+        int c;
+        for (int i = 1; i < fibNum; i++){
+            c = b;
+            b = a + b;
+            a = c;
+        }
+        return b;
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        int value = 45;
+        count = 0;
+        System.out.println(fibonacciRecursive(value));
+        System.out.println(fibonacciIterative(value));
+        System.out.println(count);
     }
 }
